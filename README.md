@@ -1,6 +1,6 @@
 # API Style Guide
 
-## HTTP Methods
+### HTTP Methods
 
 | Method | Description |
 | ------ | ------ |
@@ -10,7 +10,7 @@
 | PATCH | Perform a partial update to a resource. |
 | DELETE | Delete a resource. |
 
-## HTTP Headers
+### HTTP Headers
 
 | HTTP Header Name	| Description |
 | --- | --- |
@@ -20,13 +20,13 @@
 | [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language) |  This entity header is used to describe the language(s) intended for the audience. APIs must provide this header in the response. Example: Content-Language: pt-BR |
 | [Content-Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type) | This entity header is used to indicate the media type of the resource. This value should include application/json. |
 
-## API Versioning
+### API Versioning
 
 ```
 GET api.myservice.com/v1/customers
 ```
 
-## Endpoints
+### Endpoints
 
 The endpoint URLs should be in the following format:
 
@@ -51,17 +51,17 @@ The IDs in the endpoint URLs should not be sequential.
 
 Trailing slash is optional.
 
-## Use Envelopes
+### Use Envelopes
 
 Use envelope to avoid some [potentials hacks](http://haacked.com/archive/2009/06/25/json-hijacking.aspx/). Click here to [see more](https://medium.com/studioarmix/learn-restful-api-design-ideals-c5ec915a430f).
 
-## Letter Case
+### Letter Case
 
 For the JSON use snake_case or camelCase as you prefer. Snake case is 20% easier to read but it is up to you.
 
-## Errors
+### Errors
 
-### Status Codes
+#### Status Codes
 
 | Codes | Description |
 | ------ | ------ |
@@ -95,7 +95,7 @@ If the email field isn’t a valid email, return a 422.
 If the email is already taken, return a 409.
 ```
 
-### Error Format
+#### Error Format
 
 ```
 422 Unprocessable Entity
@@ -121,7 +121,7 @@ If the email is already taken, return a 409.
 }
 ```
 
-## Pagination
+### Pagination
 
 Use query string parameter **page** starting at **1** to return a limited number of results. The **page_size** query string has a maximum of **1000** and default page_size of **20** for the pagination.
 
@@ -129,7 +129,7 @@ Use query string parameter **page** starting at **1** to return a limited number
 GET /v1/customers/?page=5&page_size=300
 ```
 
-## Sort
+### Sort
 
 Use **sort_by** query string parameters to order the resources as specificed by the client.
 
@@ -144,7 +144,7 @@ SELECT name, weight, age FROM customers ORDER BY name ASC, weight ASC, age DESC;
 
 The fields are separeted by commas and their order should be respected. The minus symbol denotes DESC order and no minus symbol denotes ASC order.
 
-## Date, Time and Timezone
+### Date, Time and Timezone
 
 The date and time string MUST conform to the date-time universal format defined in section 5.6 of [RFC3339](https://www.ietf.org/rfc/rfc3339.txt).
 
@@ -154,9 +154,9 @@ When processing requests, an API SHOULD accept full-date, date-time or full-time
 
 (PayPal - Date, Time and Timezone)[https://github.com/paypal/api-standards/blob/master/api-style-guide.md#date-time-and-timezone]
 
-## Fetching Data
+### Fetching Data
 
-### POST
+#### POST
 
 Create a new resource and return the resource object.
 
@@ -175,7 +175,7 @@ POST /v1/customers
 }
 ```
 
-### GET (single resource)
+#### GET (single resource)
 
 Get a single resource using the ID in the URL query string.
 
@@ -192,7 +192,7 @@ GET /v1/customers/1e92EA
 }
 ```
 
-### GET (resource list)
+#### GET (resource list)
 
 Get a list of resources plus the meta information about this list such as total items and pages.
 
@@ -214,7 +214,7 @@ GET /v1/customers
 }
 ```
 
-### PATCH
+#### PATCH
 
 Update partially a single resource.
 
@@ -227,7 +227,7 @@ PATCH /v1/customers/1e92EA
 204 No Content
 ```
 
-### DELETE
+#### DELETE
 
 Delete a single resource.
 
@@ -237,12 +237,12 @@ DELETE /v1/customers/1e92EA
 204 No Content
 ```
 
-## Avoid Unnecessary Query Strings
+### Avoid Unnecessary Query Strings
 
 [RESTful API Design Tips from Experience
  - Avoid Unnecessary Query Strings](https://medium.com/studioarmix/learn-restful-api-design-ideals-c5ec915a430f)
 
-## Implement a “Health-Check” Endpoint
+### Implement a “Health-Check” Endpoint
 
 A simple endpoint that can indicate if your API instance is alive and does not need to be restarted. It’s also useful for easily checking what version of the API is on any machine at any time, without authentication.
 
@@ -257,19 +257,19 @@ GET /
 
 [See more](https://medium.com/studioarmix/learn-restful-api-design-ideals-c5ec915a430f)
 
-## Request ID
+### Request ID
 
 You should beware. X-Request-ID support means that you can easily trace an HTTP request all the way from a client to your backend web processes (via our proxies).
 
 [See more](https://atech.blog/viaduct/x-request-id)
 
-## Bulk Operations
+### Bulk Operations
 
 Used for a single request with a list of resources.
 
 This kind of requisition should be [atomic](https://en.wikipedia.org/wiki/Atomicity_(database_systems)).
 
-### Request Format
+#### Request Format
 
 Recommended to use bulk at the end of the URL.
 
@@ -296,7 +296,7 @@ POST /v1/customers/bulk
 }
 ```
 
-## Internationalization
+### Internationalization
 
 | Type | Description |
 | --- | --- |
@@ -306,7 +306,7 @@ POST /v1/customers/bulk
 
 [PayPal - Internationalization](https://github.com/paypal/api-standards/blob/master/api-style-guide.md#internationalization)
 
-## GZIP
+### GZIP
 
 Compress your response using GZIP, it will save time and bytes.
 
@@ -318,10 +318,13 @@ How to GZIP:
 [nginx - Enable GZIP](https://easyengine.io/tutorials/nginx/enable-gzip/)
 
 
-## Reefers
+### Reefers
 
 [RESTful API Design Tips from Experience
 ](https://medium.com/studioarmix/learn-restful-api-design-ideals-c5ec915a430f)
+
 [PayPal - API Design Patterns And Use Cases](https://github.com/paypal/api-standards/blob/master/patterns.md)
+
 [PayPal - API Design Guidelines](https://github.com/paypal/api-standards/blob/master/api-style-guide.md)
+
 [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
