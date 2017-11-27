@@ -237,6 +237,42 @@ DELETE /v1/customers/1e92EA
 204 No Content
 ```
 
+### Filtering - Field Lookups (Modifiers)
+
+I prefer to use field loopups for filtering inspired by [Django Field Lookups](https://docs.djangoproject.com/en/1.11/topics/db/queries/#field-lookups-intro) and [Django Tastypie](http://django-tastypie.readthedocs.io/en/latest/interacting.html?#interacting-with-the-api).
+
+Lookup syntax: **field__lookuptype=value**
+
+Endpoint example:
+
+```
+GET /v1/customers?age__gt=21&age__lt=33&name__icontains='Mario'
+```
+
+Example lookups:
+
+```
+ne (not equal)
+ie (ignore case - equal)
+contains
+icontains (ignore case - contains)
+in
+gt (greater than)
+gte (greater than - equal)
+lt (lower than)
+lte (lower than - equal)
+startswith
+istartswith (ignore case - starts with)
+endswith
+iendswith (ignore case - ends with)
+```
+
+Another approach to filtering is to use a json-object-like as query parameter as described in the guide below:
+[Kinvey - Modifiers](https://devcenter.kinvey.com/rest/guides/datastore#modifiers)
+
+Another approach is the Open Data Protocol (OData):
+[URL Conventions (OData Version 3.0) - Logical Operators](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)
+
 ### Avoid Unnecessary Query Strings
 
 [RESTful API Design Tips from Experience
