@@ -275,8 +275,7 @@ Another approach is the Open Data Protocol (OData):
 
 ### Avoid Unnecessary Query Strings
 
-[RESTful API Design Tips from Experience
- - Avoid Unnecessary Query Strings](https://medium.com/studioarmix/learn-restful-api-design-ideals-c5ec915a430f)
+[RESTful API Design Tips from Experience - Avoid Unnecessary Query Strings](https://medium.com/studioarmix/learn-restful-api-design-ideals-c5ec915a430f)
 
 ### Implement a “Health-Check” Endpoint
 
@@ -287,11 +286,14 @@ GET /
 
 200 OK
 {
-  "version": "fdb1d5e"
+  "version": "1.2.3"
 }
 ```
 
-[See more](https://medium.com/studioarmix/learn-restful-api-design-ideals-c5ec915a430f)
+[RESTful API Design Tips from Experience - Implement a “Health-Check” Endpoint](https://medium.com/studioarmix/learn-restful-api-design-ideals-c5ec915a430f)
+
+Versioning: [Semantic Versioning](https://semver.org/)
+
 
 ### Request ID
 
